@@ -1,0 +1,13 @@
+config.h
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Kart verileri
+decks.json
+
+# İşletim sistemi dosyaları
+.DS_Store
+Thumbs.db

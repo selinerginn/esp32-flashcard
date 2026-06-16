@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ESP32 Flashcard Manager</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<header>
+  <h1>⚡ ESP32 Flashcard Manager</h1>
+  <span>Deck management</span>
+</header>
+
+<div class="layout">
+  <div class="sidebar">
+    <div class="sidebar-header">
+      <h2>Decks</h2>
+      <button class="btn btn-primary btn-sm" onclick="openNewDeckModal()">+ New</button>
+    </div>
+    <div class="deck-list" id="deckList"></div>
+  </div>
+
+  <div class="main">
+    <div class="main-header">
+      <div>
+        <h2 id="deckTitle">Select a deck</h2>
+        <div class="subtitle" id="deckSubtitle"></div>
+      </div>
+      <div style="display:flex;gap:8px;" id="deckActions"></div>
+    </div>
+
+    <div class="tab-bar" id="tabBar" style="display:none">
+      <div class="tab active" onclick="switchTab('cards')">Cards</div>
+      <div class="tab" onclick="switchTab('import')">Import</div>
+    </div>
+
+    <div class="tab-content" id="tabContent">
+      <div class="empty">
+        <div class="icon">📚</div>
+        <p>Select a deck from the left panel or create new</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="newDeckModal">
+  <div class="modal">
+    <h3>New Deck</h3>
+    <div class="form-group">
+      <label>Deck Name</label>
+      <input type="text" id="newDeckName" placeholder="e.g. Spanish Verbs" />
+    </div>
+    <div class="actions">
+      <button class="btn btn-ghost" onclick="closeModal('newDeckModal')">Cancel</button>
+      <button class="btn btn-primary" onclick="createDeck()">Create</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="editCardModal">
+  <div class="modal">
+    <h3>Edit Card</h3>
+    <input type="hidden" id="editCardId" />
+    <div class="form-group">
+      <label>Question</label>
+      <input type="text" id="editCardQ" />
+    </div>
+    <div class="form-group">
+      <label>Answer</label>
+      <input type="text" id="editCardA" />
+    </div>
+    <div class="actions">
+      <button class="btn btn-ghost" onclick="closeModal('editCardModal')">Cancel</button>
+      <button class="btn btn-primary" onclick="saveEditCard()">Save</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
