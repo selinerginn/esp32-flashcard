@@ -2,8 +2,8 @@
 
 A portable, battery-powered flashcard study device built with ESP32. Create and manage card decks through a web interface, sync over Wi-Fi, and study completely offline.
 
-![ESP32 Flashcard Device](docs/device-front.jpg)
-![ESP32 Flashcard Device](docs/device-side.jpg)
+![ESP32 Flashcard Device Front](docs/device-front.jpeg)
+![ESP32 Flashcard Device Side](docs/device-side.jpeg)
 ---
 
 ## Features
